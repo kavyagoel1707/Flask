@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action = "/uploads" method = "post" enctype="multipart/form-data">  
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification is-danger">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+{% endwith %}
+    <input type="file" name="file" />  
+    <input type = "submit" value="Upload Image">  
+</form> 
+<form action = "/uploaddoc" method = "post" enctype="multipart/form-data"> 
+    <input type="file" name="file" />  
+    <input type = "submit" value="Upload Document">  
+</form> 
+<a href="{{ url_for('upload.view') }}" class="navbar-item">
+    View Images and Documents
+</a>
+{% endblock %}

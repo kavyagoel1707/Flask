@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+    Welcome, Kavya!
+</h1>
+<a href="{{ url_for('upload.uploads') }}" class="navbar-item">
+    Upload Images and Documents
+</a>
+{% endblock %}

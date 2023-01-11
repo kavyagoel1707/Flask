@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
+<div style="background-color: darkgrey; ">
+<h1 style="text-align: left">{{new_file.fName}}</h1>
+<h1>{{new_file.type}}</h1>
+<a href ="{{ url_for('upload.delete',fName=new_file.fName)}}">Delete</a>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">File Name</th>
+        <th scope="col">Type</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for data in filedata %}
+      <tr>
+        <td>{{data.fName}}</td>
+        <td>{{data.type}}</td>
+        <td><a href="{{url_for('upload.download_file')}}">Download</a></td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+{% endblock %}
